@@ -1,9 +1,13 @@
 plugins {
-    id 'java'
+    id "java-library"
+    id "maven-publish"
+    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+    id 'signing'
 }
 
-group 'com.screenshotone'
-version '1.0-SNAPSHOT'
+group = "com.screenshotone.jsdk"
+archivesBaseName = "screenshotone-api-jsdk-jvm"
+version = "1.0.0"
 
 sourceCompatibility = 1.8
 
@@ -13,4 +17,66 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+        }
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            pom {
+                name = 'ScreenshotOne API SDK'
+                packaging = 'jar'
+                groupId = 'com.screenshotone.jsdk'
+                version = '1.0.0'
+                artifactId = 'screenshotone-api-jsdk'
+                description = 'An official ScreenshotOne API client for JVM.'
+                url = 'https://screenshotone.com/'
+
+                scm {
+                    connection = 'scm:https://github.com/screenshotone/jsdk.git'
+                    developerConnection = 'scm:git://github.com/screenshotone/jsdk.git'
+                    url = 'https://github.com/screenshotone/jsdk'
+                }
+
+                licenses {
+                    license {
+                        name =  'MIT'
+                        url = 'https://github.com/screenshotone/jsdk/blob/main/LICENSE'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'krasun'
+                        name = 'Dmytro Krasun'
+                        email = 'hey@screenshotone.com'
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.maven
 }

@@ -1,4 +1,4 @@
-package com.screenshotone;
+package com.screenshotone.jsdk;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;

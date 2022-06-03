@@ -1,4 +1,4 @@
-package com.screenshotone;
+package com.screenshotone.jsdk;
 
 import java.math.BigDecimal;
 import java.util.*;

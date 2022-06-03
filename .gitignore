@@ -28,6 +28,9 @@ hs_err_pid*
 .gradle
 /build/
 
+# Ignore Gradle secrets
+gradle.properties
+
 # Ignore Gradle GUI config
 gradle-app.setting
 
@@ -52,4 +55,3 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
-

@@ -1,10 +1,6 @@
-package com.screenshotone;
+package com.screenshotone.jsdk;
 
 import org.junit.Test;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
