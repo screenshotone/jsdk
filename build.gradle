@@ -47,7 +47,7 @@ publishing {
                 name = 'ScreenshotOne API SDK'
                 packaging = 'jar'
                 groupId = 'com.screenshotone.jsdk'
-                version = '1.0.0'
+                version = '1.0.1'
                 artifactId = 'screenshotone-api-jsdk'
                 description = 'An official ScreenshotOne API client for JVM.'
                 url = 'https://screenshotone.com/'
