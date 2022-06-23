@@ -9,22 +9,66 @@ import java.util.*;
 public class TakeOptions {
     private SortedMap<String, List<String>> query;
 
-    private TakeOptions(String url) {
+    private TakeOptions(String key, String value) {
         this.query = new TreeMap<>();
 
-        put("url", url);
+        put(key, value);
     }
 
     /**
      * Instantiates options with the specified site URL.
      */
     public static TakeOptions url(String url) {
-        return new TakeOptions(url);
+        return new TakeOptions("url", url);
+    }
+
+    /**
+     * Instantiates options with the specified site HTML.
+     */
+    public static TakeOptions html(String html) {
+        return new TakeOptions("html", html);
     }
 
     private void put(String key, String ...value) {
         query.put(key, Arrays.asList(value));
+    }
 
+    /**
+     * Selector is a CSS-like selector of the element to take a screenshot of.
+     */
+    public TakeOptions selector(String selector) {
+        put("selector", selector);
+
+        return this;
+    }
+
+    /**
+     * It determines the behavior of what to do when selector is not found.
+     */
+    public TakeOptions errorOnSelectorNotFound(boolean errorOn) {
+        put("error_on_selector_not_found", errorOn ? "true" : "false");
+
+        return this;
+    }
+
+    /**
+     * Styles specifies custom CSS styles for the page.
+     */
+    public TakeOptions styles(String styles)
+    {
+        put("styles", styles);
+
+        return this;
+    }
+
+    /**
+     * Scripts specifies custom scripts for the page.
+     */
+    public TakeOptions scripts(String scripts)
+    {
+        put("scripts", scripts);
+
+        return this;
     }
 
     /**
@@ -205,7 +249,7 @@ public class TakeOptions {
     /**
      * Set cookies for the request.
      */
-    public TakeOptions Cookies(String ...cookies) {
+    public TakeOptions cookies(String ...cookies) {
         put("cookies", cookies);
 
         return this;
