@@ -23,7 +23,7 @@ public class TakeOptions {
     }
 
     /**
-     * Instantiates options with the specified site HTML.
+     * Instantiates options with the specified HTML.
      */
     public static TakeOptions html(String html) {
         return new TakeOptions("html", html);
