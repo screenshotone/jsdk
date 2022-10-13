@@ -7,7 +7,7 @@ plugins {
 
 group = "com.screenshotone.jsdk"
 archivesBaseName = "screenshotone-api-jsdk-jvm"
-version = "1.0.1"
+version = "1.0.2"
 
 sourceCompatibility = 1.8
 
@@ -47,7 +47,7 @@ publishing {
                 name = 'ScreenshotOne API SDK'
                 packaging = 'jar'
                 groupId = 'com.screenshotone.jsdk'
-                version = '1.0.1'
+                version = '1.0.2'
                 artifactId = 'screenshotone-api-jsdk'
                 description = 'An official ScreenshotOne API client for JVM.'
                 url = 'https://screenshotone.com/'

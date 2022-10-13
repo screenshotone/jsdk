@@ -294,6 +294,15 @@ public class TakeOptions {
         return this;
     }
 
+    /**
+     * Hides selectors.
+     */
+    public TakeOptions hideSelectors(String... hideSelectors) {
+        put("hide_selectors", hideSelectors);
+
+        return this;
+    }
+
     protected Map<String, List<String>> query() {
         return query;
     }
